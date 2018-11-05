@@ -1,11 +1,12 @@
 import React from 'react';
 import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
 
-import { PostList } from './posts';
+import { ArticleList } from './articles';
+import { authorizedHttpClient, authClient } from './authClient';
 
 const App = () => (
-    <Admin title="Jalkapallo" restClient={jsonServerRestClient('http://jsonplaceholder.typicode.com')}>
-        <Resource name="posts" list={PostList} />
+    <Admin authClient={authClient} title="Jalkapallo" restClient={jsonServerRestClient('http://localhost:3001', authorizedHttpClient)}>
+        <Resource name="articles" list={ArticleList} />
     </Admin>
 );
 
