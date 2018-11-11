@@ -1,6 +1,6 @@
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK, fetchUtils } from 'admin-on-rest';
+import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK, fetchUtils } from 'react-admin';
 
-export async function authClient(type, params) {
+export async function authProvider(type, params) {
     // called when the user attempts to log in
     if (type === AUTH_LOGIN) {
         const response = await fetchUtils.fetchJson('http://localhost:3001/auth', {
@@ -25,7 +25,7 @@ export async function authClient(type, params) {
     if (type === AUTH_ERROR) {
         const { status } = params;
         if (status === 401 || status === 403) {
-            // localStorage.removeItem('AccessToken');
+            localStorage.removeItem('AccessToken');
             return Promise.reject();
         }
         return Promise.resolve();

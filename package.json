@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "admin-on-rest": "^1.4.1",
+    "ra-data-json-server": "^2.4.1",
     "react": "^16.6.0",
+    "react-admin": "^2.4.1",
     "react-dom": "^16.6.0",
     "react-scripts": "2.1.1"
   },

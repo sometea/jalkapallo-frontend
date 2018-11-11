@@ -1,11 +1,12 @@
 import React from 'react';
-import { jsonServerRestClient, Admin, Resource } from 'admin-on-rest';
+import { Admin, Resource } from 'react-admin';
+import jsonServerRestClient from 'ra-data-json-server';
 
 import { ArticleList } from './articles';
-import { authorizedHttpClient, authClient } from './authClient';
+import { authorizedHttpClient, authProvider } from './authClient';
 
 const App = () => (
-    <Admin authClient={authClient} title="Jalkapallo" restClient={jsonServerRestClient('http://localhost:3001', authorizedHttpClient)}>
+    <Admin authProvider={authProvider} title="Jalkapallo" dataProvider={jsonServerRestClient('http://localhost:3001', authorizedHttpClient)}>
         <Resource name="articles" list={ArticleList} />
     </Admin>
 );
