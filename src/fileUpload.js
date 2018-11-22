@@ -7,19 +7,18 @@ const convertFileToBase64 = file => new Promise((resolve, reject) => {
 });
 
 export const addUploadFeature = requestHandler => (type, resource, params) => {
-    if (type === 'UPDATE' && resource === 'posts') {
-        if (params.data.picture) {
-
-            return convertFileToBase64(params.data.picture)
+    if ((type === 'UPDATE' || type === 'CREATE') && resource === 'images') {
+        if (params.data.file) {
+            return convertFileToBase64(params.data.file)
                 .then(base64Picture => requestHandler(type, resource, {
                     ...params,
                     data: {
                         ...params.data,
-                        file: base64Picture,
+                        body: base64Picture,
+                        filename: params.data.file.rawFile.name,
                     },
                 }));
         }
     }
-    // for other request types and resources, fall back to the default request handler
     return requestHandler(type, resource, params);
 };

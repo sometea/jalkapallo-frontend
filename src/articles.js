@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Edit, Datagrid, TextField, SimpleForm, DisabledInput, TextInput, LongTextInput } from 'react-admin';
+import { List, Edit, Create, Datagrid, TextField, SimpleForm, DisabledInput, TextInput, LongTextInput } from 'react-admin';
 
 export const ArticleList = props => (
     <List {...props}>
@@ -22,10 +22,10 @@ export const ArticleEdit = props => (
 );
 
 export const ArticleCreate = props => (
-    <Edit {...props}>
+    <Create {...props}>
         <SimpleForm>
             <TextInput source="title" />
             <LongTextInput source="body" />
         </SimpleForm>
-    </Edit>
+    </Create>
 );
