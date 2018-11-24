@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Edit, Create, Datagrid, TextField, FileField, SimpleForm, DisabledInput, TextInput, FileInput } from 'react-admin';
+import { List, Edit, Create, Datagrid, TextField, ImageField, SimpleForm, DisabledInput, TextInput, ImageInput } from 'react-admin';
 
 export const ImageList = props => (
     <List {...props}>
@@ -18,6 +18,7 @@ export const ImageEdit = props => (
             <TextInput source="title" />
             <DisabledInput source="filename" />
             <DisabledInput source="url" />
+            <ImageField source="url" title="title" />
         </SimpleForm>
     </Edit>
 );
@@ -26,9 +27,9 @@ export const ImageCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="title" />
-            <FileInput source="file">
-                <FileField source="src" title="title" />
-            </FileInput>
+            <ImageInput source="file" label="Image file" accept="image/*">
+                <ImageField source="src" title="title" />
+            </ImageInput>
         </SimpleForm>
     </Create>
 );
