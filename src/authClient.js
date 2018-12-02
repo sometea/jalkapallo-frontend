@@ -1,9 +1,10 @@
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK, fetchUtils } from 'react-admin';
+import { config } from './config';
 
 export async function authProvider(type, params) {
     // called when the user attempts to log in
     if (type === AUTH_LOGIN) {
-        const response = await fetchUtils.fetchJson('http://localhost:3001/auth', {
+        const response = await fetchUtils.fetchJson(config.backend + '/auth', {
             method: 'POST',
             mode: 'cors',
             redirect: 'follow',

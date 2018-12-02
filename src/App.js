@@ -6,8 +6,9 @@ import { ArticleList, ArticleEdit, ArticleCreate } from './articles';
 import { ImageList, ImageEdit, ImageCreate } from './images';
 import { authorizedHttpClient, authProvider } from './authClient';
 import { addUploadFeature } from './fileUpload';
+import { config } from './config';
 
-const restProvider = addUploadFeature(jsonServerRestClient('http://localhost:3001', authorizedHttpClient));
+const restProvider = addUploadFeature(jsonServerRestClient(config.backend, authorizedHttpClient));
 
 const App = () => (
     <Admin authProvider={authProvider} title="Jalkapallo" dataProvider={restProvider}>
